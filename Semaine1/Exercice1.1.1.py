@@ -10,7 +10,7 @@ print("Bonjour! comment t'appelles-tu?")
 name = input()
 
 # initialisation du nombre aléatoire number
-number = random.randint(0, 100)
+number = random.randint(1, 100)
 print("Ok, " + name + ", je pense a un nombre entier, de 1 et 100. Le quel est-il?")
 
 # boucle pour relancer tant que le nombre n'est pas trouvé
@@ -25,14 +25,14 @@ while guess != number:
     if guess < number:
         if (number - guess) < 6:
             print("tu es très proche.")
-        elif (number - guess) < 10:
+        elif (number - guess) < 11:
             print("Tu te rapproche.")
         print("Le nombre que tu cherches est plus grand.")
 
     elif guess > number:
         if (guess - number) < 6:
             print("Tu es très proche.")
-        elif (guess - number) < 10:
+        elif (guess - number) < 11:
             print("Tu te rapproche.")
         print("Le nombre est encore en dessous.")
 

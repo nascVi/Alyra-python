@@ -51,7 +51,7 @@ while True:
         print("Ce doit être un nombre :)))")
 
 # estimation intiated to a random number between 1 and 100
-estimation = random.randint(1, 101)
+estimation = random.randrange(1, 101)
 
 # r or the result of inner scope the research
 r = recherche(estimation, solution, 1, 100)

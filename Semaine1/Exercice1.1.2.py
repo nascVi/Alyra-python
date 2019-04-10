@@ -58,3 +58,6 @@ r = recherche(estimation, solution, 1, 100)
 
 # The user number is given the interface. Loop is over
 print("Votre nombre est bien %d, n'est ce pas?!" % r)
+
+
+

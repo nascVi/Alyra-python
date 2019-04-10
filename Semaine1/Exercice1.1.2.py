@@ -35,7 +35,7 @@ def recherche(estimation, solution, min, max):
 # Welcoming message from ui
 print("Hello! Je vais deviner un nombre entre 1 et 100 en moins d'une seconde. Vous Jouez ?!")
 
-# Loop rehearsing to keep the number search and handle errors like non int inputs or number out scope
+# Handle the rehearsing to keep the number search and errors like non int inputs or number out scope
 while True:
     solution = input("Entrez le nombre de votre choix! ")
 

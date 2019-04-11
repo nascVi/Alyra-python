@@ -1,6 +1,7 @@
 def estPalindrome( s ):
 
-    s = s.replace(" ", "").lower()
+    s = s.replace(' ', '').lower()
+    return s == s [::-1]
 
     i = 0
     j = len(s) - 1
@@ -26,4 +27,3 @@ if estPalindrome( M ):
 else:
 
     print( "N'est pas palindrome !" )
-!")

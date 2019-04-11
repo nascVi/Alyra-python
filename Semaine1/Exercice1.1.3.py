@@ -1,4 +1,4 @@
-def estpalindrome( s ):
+def estPalindrome( s ):
 
     s = s.replace(" ", "").lower()
 
@@ -17,14 +17,13 @@ def estpalindrome( s ):
     return True
 
 
-M = input("Entrez un palindrome (ou pas)\n")
+M = input( "Checkez si palindrome \n " )
 
-if estpalindrome( M ):
+if estPalindrome( M ):
 
-    print("C'est un palindrome !")
+    print( "Est un palindrome !" )
 
 else:
 
-    print("Ce n'est pas un palindrome !")
-
-
+    print( "N'est pas palindrome !" )
+!")

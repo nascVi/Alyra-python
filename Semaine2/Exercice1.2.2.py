@@ -1,4 +1,4 @@
-'''
+"""
 Exercice 1.2.2 : Obtenir les meilleurs pourboires
 On définit un ensemble de transactions avec leur taille (en octets) et leur pourboire (en satoshis) associés :
 
@@ -15,53 +15,58 @@ Pourboire (satoshis)
 
 Définir un algorithme pour résoudre ce problème quel que soit le nombre de transactions. On pourra essayer une approche exhaustive qui essaye toutes les combinaisons de transactions et une approche plus tactique.
 
-'''
-
-import os
-import math
-import sys
-from itertools import *
-
-# initial array of the transactions datas
-trans = [[600,1500], [700, 1500], [800, 2000], [1000, 2800], [1200, 3500], [1300, 5000], [2000, 13000], [6000, 9000]]
-
-# get transation by the tips
-tip_trans = sorted(trans, key=lambda l:l[1], reverse=True)
+"""
 
 
-# function to mix and extract the best tip from transactions 
-def mix_trans(a):
-    mix = combinations_with_replacement(tip_trans, a)
-    return mix
+# The following function gets the max bits amount available from a list, and retrieve from it, the bigger possible amount of satoshis.
+def best_tip(lim_bits, bits, satoshis, tip):
 
-limBit = 6000
-# Amount of transactions available
-a = 1
-fin_tip = 0
-fin_a = 0
+    P = [[0 for k in range(lim_bits + 1)] for k in range(tip + 1)]
 
-while a <=10 :
-# The limit being fixed to 6000 bits, there will be a maximum of 10 transactions
-    M = mix_trans(a)
-    for n in M:
-        i=0
-        tip = 0
-        bit = 0
-        while i < a :
-            tip = tip + n[i][1]
-            bit = bit + n[i][0]
-            i+=1
+    for i in range(tip + 1):
 
-        if bit <= limBit :
-        #The amount of transactions sorted as soon as the top bits value (6000), is reached
-            print("\n A", a,"transactions, le plus gros pourboire est de:", tip, " satoshis, et" , bit, "octets.")
+        for x in range(lim_bits + 1):
+
+            if i == 0 or x == 0:
+                P[i][x] = 0
+
+            elif bits[i - 1] <= x:
+                P[i][x] = max(satoshis[i - 1] + P[i - 1][x - bits[i - 1]], P[i - 1][x])
+
+            else:
+                P[i][x] = P[i - 1][x]
+
+    tips_amount = P[tip][lim_bits]
+
+    tr_list = []
+    satoshis_list = []
+
+    bits_amount = lim_bits
+    for i in range(tip, 0, -1):
+
+        if tips_amount <= 0:
             break
-        
-    if tip > fin_tip :
-        fin_tip = tip
-        fin_a = a
-    a+=1
-    
-print("\n LE MEILLEURS POURBOIRE ET DE", fin_tip, "SATOSHIS, OBTENU SUITE A", fin_a, "TRANSACTIONS. \n")
+
+        if tips_amount == P[i - 1][bits_amount]:
+            continue
+
+        else:
+
+            tr_list.append(bits[i - 1])
+            satoshis_list.append(satoshis[i - 1])
+
+            tips_amount = tips_amount - satoshis[i - 1]
+            bits_amount = bits_amount - bits[i - 1]
+
+    print("\nLes transactions pour atteindre le pourboire le plus important, sont les suivantes:\n", tr_list)
+    print("\nSoit un total de ", P[tip][lim_bits], "satoshis, résultant du cumule des indices correspondant:\n", satoshis_list)
+
+
+satoshis = [13000, 9000, 2000, 1500, 3500, 2800, 5000, 1500]
+bits = [2000, 6000, 800, 700, 1200, 1000, 1300, 600]
+lim_bits = 6000
+tip = len(satoshis)
+
+best_tip(lim_bits, bits, satoshis, tip)
 
 

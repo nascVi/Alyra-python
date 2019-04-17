@@ -18,7 +18,7 @@ Définir un algorithme pour résoudre ce problème quel que soit le nombre de tr
 """
 
 
-# The following function gets the max bits amount available from a list, and retrieve from it, the bigger possible amount of satoshis.
+# The following function gets the max bits amount available from a list, and retrieves from it the bigger possible amount of satoshis.
 def best_tip(lim_bits, bits, satoshis, tip):
 
     P = [[0 for k in range(lim_bits + 1)] for k in range(tip + 1)]

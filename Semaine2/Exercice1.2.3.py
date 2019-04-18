@@ -65,8 +65,7 @@ def main():
             X = input("\nVotre nombre doit être positif: ")
             X = int(X)
                         
-        print("\nLa factorielle de " + str(X) +
-              " est : " + str(recuFactorial(X)) + "\n")
+        print("\nLa factorielle de " + str(X) + " est : " + str(recuFactorial(X)) + "\n")
     
     except ValueError:
         print("\n Saisie incorrecte ... \n")

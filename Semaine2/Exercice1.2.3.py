@@ -57,7 +57,7 @@ def recuFactorial(n, initCall=True, pw=1):
 
 def main():
     
-    print("\n CALCULE DE LA FACTORIELLE D'UN ENTIER NATUREL \n")
+    print("\n CALCULE DE LA FACTORIELLE D'UN ENTIER NATUREL")
 
     try:
         X = -1     

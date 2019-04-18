@@ -37,22 +37,22 @@ def nivRecuFactorial(n):
         return n * nivRecuFactorial(n-1)
 
 
-def recuFactorial(n, initCall=True, pow=1):
+def recuFactorial(n, initCall=True, pw=1):
     if n == 0:
         return 1
     elif n == 2:
         if initCall == True:
-            return 2**pow
+            return 2**pw
         return 1
     elif n % 2 == 0:
         if n > 4 and initCall == True:
-            return recuFactorial(n-1, False, pow + int(n/2)) * recuFactorial(int(n/2), True, pow + int(n/2))
+            return recuFactorial(n-1, False, pw + int(n/2)) * recuFactorial(int(n/2), True, pw + int(n/2))
         elif n == 4:
-            return recuFactorial(n-1, initCall, pow + 2)
+            return recuFactorial(n-1, initCall, pw + 2)
         else:
-            return recuFactorial(n-1, initCall, pow)
+            return recuFactorial(n-1, initCall, pw)
     else:
-        return n * recuFactorial(n-1, initCall, pow)
+        return n * recuFactorial(n-1, initCall, pw)
 
 
 def main():

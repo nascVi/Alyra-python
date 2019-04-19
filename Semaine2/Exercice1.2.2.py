@@ -19,13 +19,13 @@ Définir un algorithme pour résoudre ce problème quel que soit le nombre de tr
 
 
 # The following function gets the max bits amount available from a list, and retrieves from it the bigger possible amount of satoshis.
-def best_tip(lim_bits, bits, satoshis, tip):
+def bestTip(limBits, bits, satoshis, tip):
 
-    P = [[0 for k in range(lim_bits + 1)] for k in range(tip + 1)]
+    P = [[0 for k in range(limBits + 1)] for k in range(tip + 1)]
 
     for i in range(tip + 1):
 
-        for x in range(lim_bits + 1):
+        for x in range(limBits + 1):
 
             if i == 0 or x == 0:
                 P[i][x] = 0
@@ -36,37 +36,37 @@ def best_tip(lim_bits, bits, satoshis, tip):
             else:
                 P[i][x] = P[i - 1][x]
 
-    tips_amount = P[tip][lim_bits]
+    tipsAmount = P[tip][limBits]
 
-    tr_list = []
-    satoshis_list = []
+    trList = []
+    satoshisList = []
 
-    bits_amount = lim_bits
+    bitsAmount = limBits
     for i in range(tip, 0, -1):
 
-        if tips_amount <= 0:
+        if tipsAmount <= 0:
             break
 
-        if tips_amount == P[i - 1][bits_amount]:
+        if tipsAmount == P[i - 1][bitsAmount]:
             continue
 
         else:
 
-            tr_list.append(bits[i - 1])
-            satoshis_list.append(satoshis[i - 1])
+            trList.append(bits[i - 1])
+            satoshisList.append(satoshis[i - 1])
 
-            tips_amount = tips_amount - satoshis[i - 1]
-            bits_amount = bits_amount - bits[i - 1]
+            tipsAmount = tipsAmount - satoshis[i - 1]
+            bitsAmount = bitsAmount - bits[i - 1]
 
-    print("\nLes transactions pour atteindre le pourboire le plus important, sont les suivantes:\n", tr_list)
-    print("\nSoit un total de ", P[tip][lim_bits], "satoshis, résultant du cumule des indices correspondant:\n", satoshis_list)
+    print("\nLes transactions pour atteindre le pourboire le plus important, sont les suivantes:\n", trList)
+    print("\nSoit un total de ", P[tip][limBits], "satoshis, résultant du cumule des indices correspondant:\n", satoshisList)
 
 
 satoshis = [13000, 9000, 2000, 1500, 3500, 2800, 5000, 1500]
 bits = [2000, 6000, 800, 700, 1200, 1000, 1300, 600]
-lim_bits = 6000
+limBits = 6000
 tip = len(satoshis)
 
-best_tip(lim_bits, bits, satoshis, tip)
+bestTip(limBits, bits, satoshis, tip)
 
 

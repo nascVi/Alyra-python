@@ -39,19 +39,25 @@ for i in range(3, len(deals)+1):
     for xchange in permutations(deals, i):
         positiveX = True
         
-        # None corresponding from a currency to another after an exhange
+        # different currency obtained after an exhange
         if xchange[0][0][0] != xchange[-1][1][0]:
             continue
         
         for j in range(0,len(xchange)-1):
             
-            # None corresponding money to exchange handle
+            # None corresponding money for an exchange handle
             if xchange[j][1][0] != xchange[j+1][0][0]:
                 positiveX = False
                 break
         
+        # Match out the entitled exchanges
         if positiveX:
             matchableD.append(xchange)
 
+print("\nThe possible transactions are: ")
+
 for deal in matchableD:
     print(str(deal))
+
+print("\n")
+

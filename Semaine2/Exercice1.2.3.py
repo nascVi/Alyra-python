@@ -56,17 +56,17 @@ def recuFactorial(n, initCall=True, pw=1):
 
 
 def main():
-    
+
     print("\n CALCULE DE LA FACTORIELLE D'UN ENTIER NATUREL")
 
     try:
-        X = -1     
+        X = -1
         while X < 0:
             X = input("\nVotre nombre doit être positif: ")
             X = int(X)
-                        
+
         print("\nLa factorielle de " + str(X) + " est : " + str(recuFactorial(X)) + "\n")
-    
+
     except ValueError:
         print("\n Saisie incorrecte ... \n")
 

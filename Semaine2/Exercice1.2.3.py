@@ -29,12 +29,13 @@ https://gmplib.org/manual/Factorial-Algorithm.html
 https://oeis.org/A000142/a000142.pdf
 '''
 
-
-def nivRecuFactorial(n):
+"""
+def nivFactorial(n):
     if n == 0:
         return 1
     else:
         return n * nivRecuFactorial(n-1)
+"""
 
 
 def recuFactorial(n, initCall=True, pw=1):

@@ -37,6 +37,6 @@ while i <= n :
     # nombre d'opérations effectuées
     print(i)
 
-print("La factorielle pour ", n, "est: ", f)
+print("La factorielle pour", n, "est: ", f)
 
 

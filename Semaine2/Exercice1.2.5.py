@@ -121,7 +121,7 @@ class Tree:
                     nodRep = node.right.right
                     while nodRep.left is not None:
                         nodRep = nodRep.left
-                    nodRep.left = node.droit.left
+                    nodRep.left = node.right.left
                     node.right = nodRep
                 find = True
         return find

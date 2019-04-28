@@ -1,4 +1,4 @@
-'''
+"""
 On étudie des offres d’achat/vente dans une plateforme d'échange de cryptocurrencies.
 
 On y trouve les ordres (en attente) suivants:
@@ -21,7 +21,7 @@ Recherchez une méthode à partir des taux ci-dessus pour détecter les gains po
 
 Discutons en ensemble sur le forum:
 https://forum.alyra.fr/t/exercices-optionnels-ecrire-un-algorithme/73
-'''
+"""
 
 from itertools import permutations
 
